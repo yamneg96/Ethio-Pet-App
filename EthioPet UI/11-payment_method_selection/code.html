@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment Method Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+        .radio-dot {
+            --radio-dot-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(19,128,236)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273%27/%3e%3c/svg%3e');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden max-w-[430px] mx-auto shadow-2xl">
+<!-- TopAppBar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-200 dark:border-gray-800">
+<div class="text-[#0d141b] dark:text-white flex size-12 shrink-0 items-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-[#0d141b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Reservation</h2>
+</div>
+<!-- PageIndicators -->
+<div class="flex w-full flex-row items-center justify-center gap-3 py-6">
+<div class="h-2 w-2 rounded-full bg-primary/20"></div>
+<div class="h-2 w-8 rounded-full bg-primary"></div>
+<div class="h-2 w-2 rounded-full bg-primary/20"></div>
+</div>
+<!-- Summary Card -->
+<div class="px-4 mb-4">
+<div class="bg-white dark:bg-slate-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex justify-between items-center mb-3">
+<span class="text-sm text-gray-500 dark:text-gray-400">Deposit Amount</span>
+<span class="text-xl font-bold text-primary">$150.00</span>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-dashed border-gray-200 dark:border-gray-700">
+<span class="text-sm text-gray-500 dark:text-gray-400">Balance at Pickup</span>
+<span class="text-sm font-semibold text-[#0d141b] dark:text-white">$450.00</span>
+</div>
+</div>
+</div>
+<!-- HeadlineText -->
+<h3 class="text-[#0d141b] dark:text-white tracking-light text-2xl font-bold leading-tight px-4 text-left pb-1 pt-4">Payment Method</h3>
+<!-- BodyText -->
+<p class="text-[#4c739a] dark:text-gray-400 text-base font-normal leading-normal pb-4 px-4">Choose how you'd like to pay your reservation deposit.</p>
+<!-- RadioList -->
+<div class="radio-dot flex flex-col gap-3 p-4 mb-20">
+<label class="flex items-center gap-4 rounded-xl border-2 border-primary bg-primary/5 p-[15px] flex-row-reverse cursor-pointer transition-all">
+<input checked="" class="h-5 w-5 border-2 border-[#cfdbe7] bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="payment-method" type="radio"/>
+<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-white dark:bg-slate-800 text-primary">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+<div class="flex grow flex-col">
+<p class="text-[#0d141b] dark:text-white text-sm font-bold leading-normal">Credit or Debit Card</p>
+<p class="text-[#4c739a] dark:text-gray-400 text-xs font-normal leading-normal">Visa, Mastercard, or Amex</p>
+</div>
+</label>
+<label class="flex items-center gap-4 rounded-xl border border-solid border-[#cfdbe7] dark:border-gray-700 p-[15px] flex-row-reverse cursor-pointer hover:bg-gray-50 dark:hover:bg-slate-800 transition-all">
+<input class="h-5 w-5 border-2 border-[#cfdbe7] bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="payment-method" type="radio"/>
+<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-400">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div class="flex grow flex-col">
+<p class="text-[#0d141b] dark:text-white text-sm font-medium leading-normal">Mobile Money (Telebirr)</p>
+<p class="text-[#4c739a] dark:text-gray-400 text-xs font-normal leading-normal">Instant mobile payment</p>
+</div>
+</label>
+<label class="flex items-center gap-4 rounded-xl border border-solid border-[#cfdbe7] dark:border-gray-700 p-[15px] flex-row-reverse cursor-pointer hover:bg-gray-50 dark:hover:bg-slate-800 transition-all">
+<input class="h-5 w-5 border-2 border-[#cfdbe7] bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="payment-method" type="radio"/>
+<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-400">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div class="flex grow flex-col">
+<p class="text-[#0d141b] dark:text-white text-sm font-medium leading-normal">Bank Transfer</p>
+<p class="text-[#4c739a] dark:text-gray-400 text-xs font-normal leading-normal">Direct transfer from local bank</p>
+</div>
+</label>
+</div>
+<!-- Sticky Bottom Button -->
+<div class="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto p-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-colors">
+<span>Pay Now $150.00</span>
+<span class="material-symbols-outlined text-sm">lock</span>
+</button>
+<div class="text-center pt-3 pb-2">
+<p class="text-[10px] text-gray-500 uppercase tracking-widest font-semibold flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[12px]">verified_user</span> 
+                    Secure Trusted Checkout
+                </p>
+</div>
+</div>
+<div class="h-24"></div>
+</div>
+</body></html>

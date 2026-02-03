@@ -1,0 +1,109 @@
+<html class="light"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#ec9213",
+            "background-light": "#f8f7f6",
+            "background-dark": "#221a10",
+            "success-accent": "#4caf50"
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans"]
+          },
+          borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden max-w-[430px] mx-auto shadow-2xl">
+<!-- TopAppBar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between">
+<div class="text-gray-900 dark:text-gray-100 flex size-12 shrink-0 items-center">
+<span class="material-symbols-outlined">close</span>
+</div>
+<h2 class="text-gray-900 dark:text-gray-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Confirmation</h2>
+</div>
+<!-- PageIndicators (Step 3 of 3) -->
+<div class="flex w-full flex-row items-center justify-center gap-3 py-5">
+<div class="h-2 w-2 rounded-full bg-primary/20"></div>
+<div class="h-2 w-2 rounded-full bg-primary/20"></div>
+<div class="h-2 w-8 rounded-full bg-primary"></div>
+</div>
+<!-- Success Illustration (Modified Images component) -->
+<div class="flex w-full grow bg-background-light dark:bg-background-dark @container p-4">
+<div class="w-full gap-1 overflow-hidden @[480px]:gap-2 aspect-square rounded-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-success-accent/10 relative">
+<div class="absolute inset-0 flex items-center justify-center opacity-20">
+<span class="material-symbols-outlined text-[200px] text-success-accent">pets</span>
+</div>
+<div class="w-4/5 h-4/5 bg-center bg-no-repeat bg-cover aspect-auto rounded-xl z-10" data-alt="Happy golden retriever puppy smiling icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBh9TX7W5fQWZz9Ji4zbTyIeYdqb_SENF1GrPYxkZHEePNUrZCfef-OIDivph8YiNxINBR_HttV1VcEAw6OefkhaSiM7NEi550wNarDNbYkvgtskBZyHlj_MEBMBxeKXCZfrNRGb84P4aVHAOxfrr-Ts_MUrd3GYdnoxUytwcURRC93fgQd6A2RnSnYthS0WtOvK2a88cfUerxi0nNI2MNivPuCDjxnTqefCXQd5cXIPNawsFJ8AGRkX9dFghE5CIwsr14wvsKlXMI");'>
+</div>
+</div>
+</div>
+<!-- HeadlineText -->
+<div class="flex flex-col items-center">
+<div class="bg-success-accent/10 text-success-accent px-3 py-1 rounded-full text-xs font-bold mb-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+          RESERVATION SECURED
+      </div>
+<h1 class="text-gray-900 dark:text-gray-100 tracking-light text-[32px] font-bold leading-tight px-4 text-center pb-3">Reservation Confirmed!</h1>
+</div>
+<!-- BodyText -->
+<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-normal pb-6 pt-1 px-8 text-center">
+      Wags and whiskers! Your reservation for <b>Buddy</b> has been successfully placed. The seller, <b>Golden Meadows</b>, has been notified.
+    </p>
+<!-- Info Card (New Component) -->
+<div class="px-4 mb-8">
+<div class="bg-white dark:bg-zinc-800/50 rounded-xl p-4 border border-gray-100 dark:border-zinc-700">
+<div class="flex items-center gap-4 mb-4">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex-1">
+<p class="text-xs text-gray-500 dark:text-gray-400">Seller</p>
+<p class="text-sm font-bold text-gray-900 dark:text-gray-100">Golden Meadows Kennel</p>
+</div>
+<span class="material-symbols-outlined text-success-accent">verified</span>
+</div>
+<div class="flex items-center gap-4 border-t border-gray-100 dark:border-zinc-700 pt-4">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<div class="flex-1">
+<p class="text-xs text-gray-500 dark:text-gray-400">Next Step</p>
+<p class="text-sm font-bold text-gray-900 dark:text-gray-100">Coordinate pickup date</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons (New Component) -->
+<div class="px-4 pb-10 flex flex-col gap-3">
+<button class="w-full bg-primary hover:bg-orange-600 text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">chat_bubble</span>
+            Message Seller
+        </button>
+<button class="w-full bg-gray-100 dark:bg-zinc-800 text-gray-900 dark:text-gray-100 font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 border border-gray-200 dark:border-zinc-700">
+<span class="material-symbols-outlined">receipt_long</span>
+            Go to Orders
+        </button>
+</div>
+<!-- Safe Area Bottom (iOS) -->
+<div class="h-8 bg-background-light dark:bg-background-dark"></div>
+</div>
+
+```</body></html>

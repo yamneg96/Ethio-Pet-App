@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2bee6c",
+                        "background-light": "#f8fcf9",
+                        "background-dark": "#102216",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Reservation Details</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0d1b12] dark:text-white">
+<div class="relative flex h-auto min-h-screen w-full max-w-[430px] mx-auto flex-col overflow-x-hidden border-x border-gray-100 dark:border-gray-800">
+<!-- TopAppBar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="text-[#0d1b12] dark:text-white flex size-12 shrink-0 items-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-[#0d1b12] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Reservation Details</h2>
+</div>
+<!-- ProgressBar -->
+<div class="flex flex-col gap-3 p-4">
+<div class="flex gap-6 justify-between items-end">
+<div class="flex flex-col">
+<p class="text-[#0d1b12] dark:text-white text-sm font-semibold leading-normal uppercase tracking-wider">Step 1 of 3</p>
+<p class="text-[#4c9a66] dark:text-primary text-xs font-medium">1. Details, 2. Payment, 3. Confirm</p>
+</div>
+<p class="text-[#0d1b12] dark:text-white text-sm font-bold leading-normal">33%</p>
+</div>
+<div class="rounded-full bg-[#cfe7d7] dark:bg-gray-800">
+<div class="h-2 rounded-full bg-primary" style="width: 33%;"></div>
+</div>
+</div>
+<!-- HeadlineText -->
+<h3 class="text-[#0d1b12] dark:text-white tracking-light text-2xl font-bold leading-tight px-4 text-left pb-2 pt-5">Delivery &amp; Contact Info</h3>
+<!-- SegmentedButtons -->
+<div class="flex px-4 py-3">
+<div class="flex h-12 flex-1 items-center justify-center rounded-xl bg-[#e7f3eb] dark:bg-gray-800 p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-xl px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-sm has-[:checked]:text-[#0d1b12] dark:has-[:checked]:text-white text-[#4c9a66] text-sm font-semibold leading-normal">
+<span class="truncate">Delivery</span>
+<input checked="" class="invisible w-0" name="delivery-type" type="radio" value="Delivery"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-xl px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-sm has-[:checked]:text-[#0d1b12] dark:has-[:checked]:text-white text-[#4c9a66] text-sm font-semibold leading-normal">
+<span class="truncate">Local Pickup</span>
+<input class="invisible w-0" name="delivery-type" type="radio" value="Local Pickup"/>
+</label>
+</div>
+</div>
+<!-- Form Fields -->
+<div class="flex flex-col gap-4 p-4">
+<!-- Address Input -->
+<div class="flex flex-col gap-1">
+<label class="text-sm font-semibold text-[#0d1b12] dark:text-white ml-1">Delivery Address</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-gray-400">location_on</span>
+<input class="w-full pl-12 pr-4 py-3 rounded-xl border border-[#cfe7d7] dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Enter your full address" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Phone Input -->
+<div class="flex flex-col gap-1">
+<label class="text-sm font-semibold text-[#0d1b12] dark:text-white ml-1">Phone Number</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-gray-400 text-lg">call</span>
+<input class="w-full pl-11 pr-4 py-3 rounded-xl border border-[#cfe7d7] dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" placeholder="(555) 000-0000" type="tel"/>
+</div>
+</div>
+<!-- Date Input -->
+<div class="flex flex-col gap-1">
+<label class="text-sm font-semibold text-[#0d1b12] dark:text-white ml-1">Preferred Date</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-gray-400 text-lg">calendar_today</span>
+<input class="w-full pl-11 pr-4 py-3 rounded-xl border border-[#cfe7d7] dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" placeholder="MM/DD/YYYY" type="text"/>
+</div>
+</div>
+</div>
+<!-- Notes -->
+<div class="flex flex-col gap-1">
+<label class="text-sm font-semibold text-[#0d1b12] dark:text-white ml-1">Delivery Instructions (Optional)</label>
+<textarea class="w-full p-4 rounded-xl border border-[#cfe7d7] dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" placeholder="e.g. Leave with neighbor, gate code: 1234" rows="3"></textarea>
+</div>
+</div>
+<!-- Map Preview (Stylized) -->
+<div class="px-4 mt-2">
+<div class="relative h-40 w-full rounded-xl overflow-hidden bg-gray-200 dark:bg-gray-700">
+<img class="w-full h-full object-cover opacity-80" data-alt="Simplified map view of delivery location" data-location="Los Angeles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlDGrhgjBUmFXVNXRmLnoiHS-B4cLQrMpqwRwVzIBdxwG1I08HatoYsp3L4g04FAhikpxaZwYUEFmn_II8zAaIryDgKDKQIwmcQr6ZtVPgQgIxqHbs1L9L_XC2xdY5KJcR98zl0s937cUblahqMeU2ShzaYUohtEe0E4WfS5YRhKiff0X1Nacgw32bOETa9CSsyomz1-DhwEDxhsXegjjfsfTlnM9-a3CJpA8lT_nVOXI81jDD1vlZlMJk_F8uH4nGoIuconWrr-U"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-primary p-2 rounded-full shadow-lg border-2 border-white">
+<span class="material-symbols-outlined text-white">pets</span>
+</div>
+</div>
+</div>
+<p class="text-xs text-[#4c9a66] dark:text-primary/70 mt-2 text-center">Your location will be shared with the verified seller</p>
+</div>
+<!-- PageIndicators -->
+<div class="flex w-full flex-row items-center justify-center gap-3 py-8">
+<div class="h-2 w-6 rounded-full bg-primary"></div>
+<div class="h-2 w-2 rounded-full bg-[#cfe7d7] dark:bg-gray-800"></div>
+<div class="h-2 w-2 rounded-full bg-[#cfe7d7] dark:bg-gray-800"></div>
+</div>
+<!-- Bottom Action Button -->
+<div class="mt-auto p-4 mb-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-[#0d1b12] font-bold py-4 rounded-xl shadow-md transition-colors flex items-center justify-center gap-2">
+                Continue to Payment
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="h-5 bg-background-light dark:bg-background-dark"></div>
+</div>
+</body></html>

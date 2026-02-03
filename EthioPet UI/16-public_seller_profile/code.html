@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Public Seller Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ecc8",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#10221f",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2c29",
+                        "text-main-light": "#0d1b19",
+                        "text-main-dark": "#e0f2f0",
+                        "text-sub-light": "#4c9a8d",
+                        "text-sub-dark": "#88ccc2",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for horizontal scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark antialiased overflow-x-hidden pb-24">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md px-4 py-3 flex items-center justify-between border-b border-gray-200/50 dark:border-gray-800/50">
+<button class="p-2 -ml-2 rounded-full hover:bg-gray-100 dark:hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined text-text-main-light dark:text-text-main-dark">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold">Seller Profile</h2>
+<button class="p-2 -mr-2 rounded-full hover:bg-gray-100 dark:hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined text-text-main-light dark:text-text-main-dark">ios_share</span>
+</button>
+</div>
+<!-- Profile Header -->
+<div class="px-4 pt-6 pb-2 flex flex-col items-center">
+<div class="relative mb-4">
+<div class="h-28 w-28 rounded-full bg-cover bg-center border-4 border-white dark:border-surface-dark shadow-lg" data-alt="Portrait of Sarah the seller smiling" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEjDt9emJIeHjBhQB0mJs9erl2Jx35jK1E8ufupyckM9kY8YeujgqCzenUB7LjNjd-zU7KXAqVf4lNzSXAOFM2B8oKy1YALgcKwn8dO5pk1ka6Acn5w-lewoB_IeK5e6QX7Qsx2SGHHezgwtl-wsptCRBQR6zOGXCN8HZgvLrMzAkUTPQw6GeC885zmGCfyp1bxsE_rHOx_NBNp89Bw6K1HuPAvZGz94hXMdYXwR25d9QLHDfgeMqOgSauqBftPw0p5DMRSdt1V0I');">
+</div>
+<div class="absolute bottom-0 right-0 bg-primary text-background-dark p-1.5 rounded-full border-2 border-white dark:border-surface-dark flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[18px] font-bold">verified_user</span>
+</div>
+</div>
+<h1 class="text-2xl font-bold mb-1 text-center">Sarah's Golden Retrievers</h1>
+<div class="flex items-center gap-1 mb-2 text-text-sub-light dark:text-text-sub-dark">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-sm font-medium">San Francisco, CA</span>
+</div>
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 dark:bg-primary/20 text-primary-dark dark:text-primary text-xs font-bold tracking-wide uppercase">
+            Verified Seller
+        </div>
+</div>
+<!-- Trust Stats -->
+<div class="px-4 py-6">
+<div class="grid grid-cols-3 gap-3">
+<div class="flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-light dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-gray-800">
+<span class="text-xl font-bold mb-1">5 Yrs</span>
+<span class="text-[10px] uppercase tracking-wider text-text-sub-light dark:text-text-sub-dark font-semibold text-center">On Platform</span>
+</div>
+<div class="flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-light dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-gray-800">
+<span class="text-xl font-bold mb-1">1 hr</span>
+<span class="text-[10px] uppercase tracking-wider text-text-sub-light dark:text-text-sub-dark font-semibold text-center">Reply Time</span>
+</div>
+<div class="flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-light dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-1 mb-1">
+<span class="text-xl font-bold">4.9</span>
+<span class="material-symbols-outlined text-amber-400 text-sm fill-current">star</span>
+</div>
+<span class="text-[10px] uppercase tracking-wider text-text-sub-light dark:text-text-sub-dark font-semibold text-center">Rating</span>
+</div>
+</div>
+</div>
+<!-- About Section -->
+<div class="px-4 pb-6">
+<h3 class="text-lg font-bold mb-2">About Sarah</h3>
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-4 border border-gray-100 dark:border-gray-800 shadow-sm">
+<p class="text-text-sub-light dark:text-text-sub-dark leading-relaxed text-sm">
+                Passionate breeder focused on health and temperament. All puppies are raised in our home with love and socialization. We specialize in English Cream Golden Retrievers and have been connecting families with their furry best friends since 2019.
+            </p>
+</div>
+</div>
+<!-- Active Listings (Horizontal Scroll) -->
+<div class="pb-6">
+<div class="px-4 flex items-center justify-between mb-3">
+<h3 class="text-lg font-bold">Active Listings</h3>
+<button class="text-primary text-sm font-semibold hover:text-primary/80 transition-colors">See all</button>
+</div>
+<div class="flex overflow-x-auto gap-4 px-4 pb-4 no-scrollbar snap-x">
+<!-- Listing Card 1 -->
+<div class="min-w-[200px] snap-center bg-surface-light dark:bg-surface-dark rounded-2xl p-3 border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+<div class="relative h-32 w-full rounded-xl bg-gray-200 dark:bg-gray-700 mb-3 bg-cover bg-center overflow-hidden group" data-alt="Golden Retriever puppy sitting in grass" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDROEH4_BNpDJA6UctidMVjxmXTLs_bzeVhJFDxgcz20z1COY31poHYX74pOMKWzGT8340zGT-AL0U9N8teMqk-2xWbqjlcZVM5ZkpnWowPaaSlRKnkRh7hA_rzFaionZ8OFCtPpER6iWQ9LvPNSg5y6be9SpbFu8BAUVXfGraR_Ld3_TTMq_sxxHnkBiSB6036EH74HvwdUzQR4KnXGkLi7poPnw0C3x51mRhHpa8Zx6JQXK6FCsRm_2x9tW3TwNd12EZqiNcJ1Qk');">
+<div class="absolute top-2 right-2 bg-black/30 backdrop-blur-sm p-1.5 rounded-full text-white">
+<span class="material-symbols-outlined text-sm block">favorite</span>
+</div>
+</div>
+<h4 class="font-bold text-base mb-1">Buddy</h4>
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark mb-2">Golden Retriever • 8 wks</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-primary text-lg">$1,200</span>
+</div>
+</div>
+<!-- Listing Card 2 -->
+<div class="min-w-[200px] snap-center bg-surface-light dark:bg-surface-dark rounded-2xl p-3 border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+<div class="relative h-32 w-full rounded-xl bg-gray-200 dark:bg-gray-700 mb-3 bg-cover bg-center overflow-hidden group" data-alt="Two puppies playing together" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD3YQqjWJumY7BpV_aKNPsV0eIQDmxjtP3iFxKmdEulpUNL-YtVq1oz6A0vY8ymibumRSWlAikm7tYP6Ao4D8FWITP_ZMhLw0_p4DB86gfDbCx4NotazoEx8MyuokuAzAQZdnnAWR7u5_TlK6o8EdH542isqhUqKUHn1FLk17jV-C8re_8LXa1nF7Rl_Fyo6FbnYiHBImQLLUONsQljgySjYAD2BhdINuFgd9PILFDaP-JR5XK0Kb4z1gjmun3AxC39CfKTXfQPjjg');">
+<div class="absolute top-2 right-2 bg-black/30 backdrop-blur-sm p-1.5 rounded-full text-white">
+<span class="material-symbols-outlined text-sm block">favorite</span>
+</div>
+</div>
+<h4 class="font-bold text-base mb-1">Bella</h4>
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark mb-2">Golden Retriever • 9 wks</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-primary text-lg">$1,200</span>
+</div>
+</div>
+<!-- Listing Card 3 -->
+<div class="min-w-[200px] snap-center bg-surface-light dark:bg-surface-dark rounded-2xl p-3 border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+<div class="relative h-32 w-full rounded-xl bg-gray-200 dark:bg-gray-700 mb-3 bg-cover bg-center overflow-hidden group" data-alt="Close up of puppy face" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDjnw7zlTVftsD1xcwy-HyE8dgcTtoF6Zp8S18LbIJQu_zvQpYLlCCXymAqz-YnMEgSlCAFXOQwGtSMdHLicHdwkuWmJHtnqr6L0IGmy0dYfWmFzPpAiJt0AZYHK84TwDBmDD3mFqUEMfjMDSt1IwAUlq00e799e0PCAyoif7XYBdCNFDgVtcjLFh4jnLL2bJR91IjfKVJMqeKBN6j0JIT0LaqmhdGm8C40mbuFLJa_uqesv0kppL4xNJ1iNk9iKGUFF60JTG2umVY');">
+<div class="absolute top-2 right-2 bg-black/30 backdrop-blur-sm p-1.5 rounded-full text-white">
+<span class="material-symbols-outlined text-sm block">favorite</span>
+</div>
+</div>
+<h4 class="font-bold text-base mb-1">Charlie</h4>
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark mb-2">Golden Retriever • 8 wks</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-primary text-lg">$1,150</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Reviews Section -->
+<div class="px-4 pb-8">
+<h3 class="text-lg font-bold mb-3">Recent Reviews</h3>
+<div class="flex flex-col gap-3">
+<!-- Review Card 1 -->
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Reviewer profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCSSK-M7ja0WdOC4YiwD_ckCrOU2c3-x1MOdrOyDD9TgvFwfjkBd6NCpQqr43WJ5NHnSJZgNm4w17NYgAsLsySOhw6gGyQpLWv4euaYGnABlFN5LMIIzHAWxvFpR07VDHdz9TA7513n4xTB6sgSJAXkCN5mLU_TMf0iijUGO5B4ccmtxezBz6qjnPUHBYiGwSHpPqGizYTvH5VC8zPUAJL-c1tOAzjVs88JEAEQL8RTkOZZSpOBirvqk0mv3F8nch8HNFJwzlalaz4')"></div>
+<span class="font-bold text-sm">Michael R.</span>
+</div>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+</div>
+</div>
+<p class="text-sm text-text-sub-light dark:text-text-sub-dark italic">"Sarah was amazing to work with! We love our new puppy. The process was so smooth and professional."</p>
+<p class="text-xs text-gray-400 mt-2">2 days ago</p>
+</div>
+<!-- Review Card 2 -->
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Reviewer profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCTTwELDJ4KQqS3NMieXdJX6uDIWtbSaTUQ_TTUOwZwFklBvCj7HR8XvN0oEeVRLesGmY7GXhv2TYGp5PRY4b1lmackdm-26gol-SSEiYJ2k7-JxIG9DmCkhYeQvfI2ree0ITSiPGM4EQ9v78ZwJLB50dOawUK-rkcx6FmJMFVNcinXZE4Wi7StMWdLkHaLK6uFLDYxQ8kybrkYBqma-7MVMPPbQkbzDI9xsfhwb9pZvzlDxbfV6wg8goFEWG_TyCSzUAvDIUr1Res')"></div>
+<span class="font-bold text-sm">Jenny K.</span>
+</div>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star_half</span>
+</div>
+</div>
+<p class="text-sm text-text-sub-light dark:text-text-sub-dark italic">"Beautiful dogs and very knowledgeable breeder. Highly recommend checking them out."</p>
+<p class="text-xs text-gray-400 mt-2">1 week ago</p>
+</div>
+</div>
+<button class="w-full mt-3 py-3 text-sm font-semibold text-text-sub-light dark:text-text-sub-dark bg-gray-100 dark:bg-gray-800 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            Read all 24 reviews
+        </button>
+</div>
+<!-- Floating Action Bar -->
+<div class="fixed bottom-6 left-4 right-4 z-40">
+<button class="w-full bg-primary hover:bg-primary/90 text-background-dark font-bold text-lg py-4 rounded-xl shadow-lg shadow-primary/30 flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">chat_bubble</span>
+            Message Sarah
+        </button>
+</div>
+</body></html>

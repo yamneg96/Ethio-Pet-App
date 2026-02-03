@@ -1,0 +1,1 @@
+Subscription like member : it will allow for reservation thought they haven't paid yet.

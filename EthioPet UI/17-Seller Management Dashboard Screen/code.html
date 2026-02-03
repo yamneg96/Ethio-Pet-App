@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seller Management Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+            extend: {
+                colors: {
+                "primary": "#19e64d",
+                "background-light": "#f8fcf9",
+                "background-dark": "#112115",
+                },
+                fontFamily: {
+                "display": ["Inter", "sans-serif"]
+                },
+                borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0e1b11] dark:text-white transition-colors duration-200">
+<!-- Mobile Container -->
+<div class="relative min-h-screen w-full mx-auto max-w-md bg-background-light dark:bg-background-dark shadow-2xl overflow-hidden flex flex-col pb-24">
+<!-- Header -->
+<div class="flex flex-col gap-2 p-4 pt-6 pb-2">
+<div class="flex items-center h-12 justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-white dark:border-[#2a382e] shadow-sm" data-alt="Portrait of a smiling pet breeder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAqwJwTFGEtzy9XKDClyDM_l0WCq5EpmHuDyKMsi59EONuSHrqV3zm_IvfhvFPZGSDSOna5i_5CUULNirpNZovrQ116ECmaGlDxtrS1qTjfVmOWZ79AzYAVJ1jL32mJVbxNG4NTYvyNgUzrkMLDaax3IhOcBshbTTnGX1-jNp34wId8o4iU7450PyL46iYra3OVH3W8bBgE4or7G64l_2L6uFkH_mrVBi2LVigKkDlwrjKpFsv7FfkqLp1InR3tziEuJPnfPAF9vLU");'></div>
+<div class="absolute bottom-0 right-0 size-3 bg-primary rounded-full border-2 border-white dark:border-[#2a382e]"></div>
+</div>
+</div>
+<div class="flex items-center justify-end">
+<button class="flex items-center justify-center rounded-full size-10 bg-white dark:bg-[#1e2e21] text-[#0e1b11] dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-[#2a382e] transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+<p class="text-[#0e1b11] dark:text-white tracking-tight text-[32px] font-bold leading-tight mt-2">Dashboard</p>
+</div>
+<!-- Horizontal Stats Scroll -->
+<div class="w-full overflow-x-auto no-scrollbar pb-2 pl-4 pr-4">
+<div class="flex gap-4 w-max">
+<!-- Card 1 -->
+<div class="flex w-[160px] flex-col justify-between gap-4 rounded-xl p-5 bg-white dark:bg-[#1e2e21] shadow-sm border border-[#e6f0e8] dark:border-[#2a382e]">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-[#f0fdf2] dark:bg-[#1a3320] rounded-lg text-primary">
+<span class="material-symbols-outlined text-[20px]">pets</span>
+</div>
+</div>
+<div>
+<p class="text-[#5c6f60] dark:text-gray-400 text-sm font-medium leading-normal mb-1">Active Listings</p>
+<p class="text-[#0e1b11] dark:text-white tracking-tight text-3xl font-bold leading-tight">12</p>
+<div class="flex items-center gap-1 mt-1 text-primary text-xs font-semibold">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+2 this week</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex w-[160px] flex-col justify-between gap-4 rounded-xl p-5 bg-white dark:bg-[#1e2e21] shadow-sm border border-[#e6f0e8] dark:border-[#2a382e]">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-[#eff6ff] dark:bg-[#172554] rounded-lg text-blue-500">
+<span class="material-symbols-outlined text-[20px]">hourglass_top</span>
+</div>
+</div>
+<div>
+<p class="text-[#5c6f60] dark:text-gray-400 text-sm font-medium leading-normal mb-1">Pending</p>
+<p class="text-[#0e1b11] dark:text-white tracking-tight text-3xl font-bold leading-tight">3</p>
+<div class="flex items-center gap-1 mt-1 text-blue-500 text-xs font-semibold">
+<span>waiting action</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex w-[160px] flex-col justify-between gap-4 rounded-xl p-5 bg-white dark:bg-[#1e2e21] shadow-sm border border-[#e6f0e8] dark:border-[#2a382e]">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-[#fefce8] dark:bg-[#422006] rounded-lg text-amber-500">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+</div>
+</div>
+<div>
+<p class="text-[#5c6f60] dark:text-gray-400 text-sm font-medium leading-normal mb-1">New Inquiries</p>
+<p class="text-[#0e1b11] dark:text-white tracking-tight text-3xl font-bold leading-tight">8</p>
+<div class="flex items-center gap-1 mt-1 text-primary text-xs font-semibold">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+5 new</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section Header -->
+<div class="flex items-center justify-between px-6 pt-6 pb-2">
+<h3 class="text-[#0e1b11] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Recent Activity</h3>
+<button class="text-sm font-medium text-primary hover:text-[#14b83d]">View All</button>
+</div>
+<!-- Timeline -->
+<div class="px-6">
+<div class="grid grid-cols-[32px_1fr] gap-x-4">
+<!-- Item 1 -->
+<div class="flex flex-col items-center pt-1">
+<div class="size-8 rounded-full bg-primary flex items-center justify-center text-[#0e1b11] shadow-sm z-10">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<div class="w-[2px] bg-[#d0e7d6] dark:bg-[#2a382e] h-full -mt-2 pb-6"></div>
+</div>
+<div class="flex flex-col pb-8 pt-1">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#0e1b11] dark:text-white text-base font-bold leading-snug">Reservation Confirmed</p>
+<span class="text-xs font-medium text-[#5c6f60] dark:text-gray-500 whitespace-nowrap">10:30 AM</span>
+</div>
+<p class="text-[#5c6f60] dark:text-gray-400 text-sm leading-relaxed line-clamp-2">Golden Retriever Puppy reserved by Sarah M. Deposit received.</p>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col items-center">
+<div class="size-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 dark:text-blue-300 shadow-sm z-10 border-2 border-white dark:border-background-dark">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</div>
+<div class="w-[2px] bg-[#d0e7d6] dark:bg-[#2a382e] h-full -mt-2 pb-6"></div>
+</div>
+<div class="flex flex-col pb-8 pt-1">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#0e1b11] dark:text-white text-base font-bold leading-snug">New Inquiry</p>
+<span class="text-xs font-medium text-[#5c6f60] dark:text-gray-500 whitespace-nowrap">Yesterday</span>
+</div>
+<p class="text-[#5c6f60] dark:text-gray-400 text-sm leading-relaxed line-clamp-2">Michael sent a question about the French Bulldog litter availability.</p>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col items-center">
+<div class="size-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-300 shadow-sm z-10 border-2 border-white dark:border-background-dark">
+<span class="material-symbols-outlined text-[18px]">vaccines</span>
+</div>
+</div>
+<div class="flex flex-col pt-1">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#0e1b11] dark:text-white text-base font-bold leading-snug">Vaccination Updated</p>
+<span class="text-xs font-medium text-[#5c6f60] dark:text-gray-500 whitespace-nowrap">Yesterday</span>
+</div>
+<p class="text-[#5c6f60] dark:text-gray-400 text-sm leading-relaxed line-clamp-2">Vaccination record updated for Max (ID: #8821).</p>
+</div>
+</div>
+</div>
+<!-- FAB -->
+<div class="fixed bottom-24 right-4 z-20">
+<button class="group flex items-center justify-center rounded-full h-14 bg-primary text-[#0e1b11] shadow-lg shadow-green-900/20 hover:scale-105 active:scale-95 transition-all duration-200 px-5 gap-2 pr-6">
+<span class="material-symbols-outlined text-[28px]">add</span>
+<span class="text-base font-bold tracking-wide">Add Pet</span>
+</button>
+</div>
+<!-- Bottom Navigation -->
+<div class="fixed bottom-0 left-0 right-0 w-full max-w-md mx-auto bg-white/90 dark:bg-[#112115]/90 backdrop-blur-md border-t border-[#e6f0e8] dark:border-[#2a382e] h-20 px-6 pb-4 pt-2 z-30">
+<div class="flex justify-between items-center h-full">
+<button class="flex flex-col items-center justify-center gap-1 w-16 text-primary">
+<span class="material-symbols-outlined text-[26px] fill-1">grid_view</span>
+<span class="text-[10px] font-semibold">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-16 text-[#5c6f60] dark:text-gray-400 hover:text-[#0e1b11] dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[26px]">pets</span>
+<span class="text-[10px] font-medium">Listings</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-16 text-[#5c6f60] dark:text-gray-400 hover:text-[#0e1b11] dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[26px]">chat_bubble_outline</span>
+<span class="text-[10px] font-medium">Messages</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-16 text-[#5c6f60] dark:text-gray-400 hover:text-[#0e1b11] dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[26px]">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

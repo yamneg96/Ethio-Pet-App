@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Details</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#19e64d",
+                        "primary-dark": "#13b33b",
+                        "accent-blue": "#3b82f6",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            min-height: 100dvh;
+        }
+        .timeline-line {
+            @apply absolute left-[19px] top-8 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-700;
+        }
+        .timeline-dot {
+            @apply relative z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 transition-colors;
+        }
+        .timeline-dot.active {
+            @apply border-primary bg-primary/10 text-primary;
+        }
+        .timeline-dot.completed {
+            @apply border-primary bg-primary text-white;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
+<div class="relative min-h-screen w-full max-w-md mx-auto flex flex-col pb-10 shadow-2xl overflow-hidden bg-background-light dark:bg-background-dark">
+<header class="sticky top-0 z-50 flex items-center justify-between px-4 py-4 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-800 dark:text-white">arrow_back_ios_new</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight">Order Details</h1>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-800 dark:text-white">more_horiz</span>
+</button>
+</header>
+<main class="flex-1 px-5 py-6 flex flex-col gap-6">
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden shadow-sm">
+<img alt="Bella the Golden Retriever" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzAtv9YcR0JCFUkwosti-Li9I4zEPQhWQC4iB-bwmAs_DbgDlqm5GPzmjR3QRmZYrFW-9QsgtzKWMhD2niLVXEDZr5hePGn45mCccc_OGoDkMpTONWoHXx-AWcjfn1bpsZE9VmMfHGwoVHjPoG9yJmNles7XH63VW4YJMPocM8z46ClHq4LpdBwqfnKrxtRutMO_-KT7BFpKIgwr5dCFz7lZ9bNQ62CKcITl2xGoAvBKe120MBYxuPFMhvatsTYR2WFG5RfThbz_U"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-xl font-bold text-slate-900 dark:text-white leading-tight">Bella</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">Golden Retriever</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-accent-blue/10 text-accent-blue text-[10px] font-bold uppercase tracking-wider">In Transit</span>
+</div>
+<div class="mt-2 flex items-center gap-2 text-xs text-slate-400">
+<span class="font-medium">Order ID:</span>
+<span class="font-mono text-slate-600 dark:text-slate-300">#PET-82931-X</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+<h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-6">Tracking Status</h3>
+<div class="relative flex flex-col gap-8">
+<div class="timeline-line"></div>
+<div class="flex items-start gap-4">
+<div class="timeline-dot completed">
+<span class="material-symbols-outlined text-xl">check</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">Order Placed</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Oct 24, 2023 • 10:45 AM</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="timeline-dot completed">
+<span class="material-symbols-outlined text-xl">check</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">Payment Confirmed</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Oct 24, 2023 • 11:30 AM</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="timeline-dot active">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+</div>
+<div>
+<h4 class="font-bold text-primary">Out for Delivery</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">In transit to your location</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="timeline-dot">
+<span class="material-symbols-outlined text-xl text-slate-300 dark:text-slate-600">home</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-300 dark:text-slate-600">Delivered</h4>
+<p class="text-xs text-slate-300 dark:text-slate-600 mt-0.5">Estimated: Today, 5:00 PM</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider">Seller Information</h3>
+<div class="flex items-center gap-1 text-primary text-xs font-bold">
+<span class="material-symbols-outlined text-sm">verified</span>
+                    Verified
+                </div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-slate-100 dark:border-slate-700">
+<img alt="Seller Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzAtv9YcR0JCFUkwosti-Li9I4zEPQhWQC4iB-bwmAs_DbgDlqm5GPzmjR3QRmZYrFW-9QsgtzKWMhD2niLVXEDZr5hePGn45mCccc_OGoDkMpTONWoHXx-AWcjfn1bpsZE9VmMfHGwoVHjPoG9yJmNles7XH63VW4YJMPocM8z46ClHq4LpdBwqfnKrxtRutMO_-KT7BFpKIgwr5dCFz7lZ9bNQ62CKcITl2xGoAvBKe120MBYxuPFMhvatsTYR2WFG5RfThbz_U"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-slate-900 dark:text-white">Sunrise Paws Kennel</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Addis Ababa, Ethiopia</p>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+<h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Payment Summary</h3>
+<div class="space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500 dark:text-slate-400">Total Price</span>
+<span class="font-medium text-slate-900 dark:text-white">$1,200.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500 dark:text-slate-400">Deposit Paid</span>
+<span class="font-bold text-primary">-$300.00</span>
+</div>
+<div class="pt-3 border-t border-slate-100 dark:border-slate-700 flex justify-between">
+<span class="font-bold text-slate-900 dark:text-white">Remaining Balance</span>
+<span class="font-bold text-lg text-slate-900 dark:text-white">$900.00</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 mt-2">
+<button class="w-full py-4 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:bg-primary-dark transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">mail</span>
+                Contact Seller
+            </button>
+<button class="w-full py-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-white font-bold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">receipt_long</span>
+                View Receipt
+            </button>
+</div>
+</main>
+<div class="h-6"></div>
+</div>
+
+</body></html>

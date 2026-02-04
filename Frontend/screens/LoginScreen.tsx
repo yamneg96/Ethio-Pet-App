@@ -1,23 +1,49 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, Alert } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeScreen } from '../components/SafeScreen';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types';
 import { useAuthStore } from '../store/authStore';
+import { login } from '../services/auth';
+import { getMe } from '../services/users';
+import { setAuthToken } from '../services/api';
+import { AnimatedScreen } from '../components/AnimatedScreen';
+import { AnimatedPressable } from '../components/AnimatedPressable';
 
 const LoginScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const setAuthenticated = useAuthStore((state) => state.setAuthenticated);
+  const setTokens = useAuthStore((state) => state.setTokens);
+  const setUser = useAuthStore((state) => state.setUser);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
-    setAuthenticated(true);
-    navigation.replace('AppTabs');
+  const roleMap = { BUYER: 'buyer', SELLER: 'seller', ADMIN: 'admin' } as const;
+
+  const handleLogin = async () => {
+    if (loading) return;
+    setLoading(true);
+    try {
+      const tokens = await login(email.trim(), password);
+      setTokens(tokens.accessToken, tokens.refreshToken);
+      setAuthToken(tokens.accessToken);
+      const me = await getMe();
+      setUser({ id: me.id, email: me.email, role: roleMap[me.role] });
+      setAuthenticated(true);
+      navigation.replace('AppTabs');
+    } catch (error) {
+      Alert.alert('Login failed', 'Please check your credentials and try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <View style={styles.topBar}>
         <TouchableOpacity style={styles.langButton}>
           <MaterialIcons name="language" size={20} color="#94a3b8" />
@@ -43,6 +69,9 @@ const LoginScreen = () => {
               style={styles.input}
               placeholder="Enter email or phone number"
               placeholderTextColor="#94a3b8"
+              value={email}
+              onChangeText={setEmail}
+              autoCapitalize="none"
             />
           </View>
           <View style={styles.inputGroup}>
@@ -53,6 +82,8 @@ const LoginScreen = () => {
                 placeholder="Enter password"
                 placeholderTextColor="#94a3b8"
                 secureTextEntry
+                value={password}
+                onChangeText={setPassword}
               />
               <MaterialIcons name="visibility-off" size={20} color="#94a3b8" />
             </View>
@@ -60,9 +91,9 @@ const LoginScreen = () => {
           <TouchableOpacity style={styles.forgotLink}>
             <Text style={styles.forgotText}>Forgot Password?</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.primaryButton} onPress={handleLogin}>
-            <Text style={styles.primaryButtonText}>Login</Text>
-          </TouchableOpacity>
+          <AnimatedPressable style={styles.primaryButton} onPress={handleLogin}>
+            <Text style={styles.primaryButtonText}>{loading ? 'Logging in...' : 'Login'}</Text>
+          </AnimatedPressable>
         </View>
         <View style={styles.footer}>
           <View style={styles.trustRow}>
@@ -78,6 +109,7 @@ const LoginScreen = () => {
           </Text>
         </View>
       </View>
+      </AnimatedScreen>
     </SafeScreen>
   );
 };

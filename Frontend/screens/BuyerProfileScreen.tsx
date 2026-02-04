@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeScreen } from '../components/SafeScreen';
+import { AnimatedScreen } from '../components/AnimatedScreen';
 import { useNavigation } from '@react-navigation/native';
 import { useAuthStore } from '../store/authStore';
 
@@ -11,6 +12,7 @@ const BuyerProfileScreen = () => {
 
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <TouchableOpacity style={styles.iconButton}>
@@ -116,6 +118,7 @@ const BuyerProfileScreen = () => {
           <Text style={styles.logoutText}>Sign Out</Text>
         </TouchableOpacity>
       </ScrollView>
+      </AnimatedScreen>
     </SafeScreen>
   );
 };

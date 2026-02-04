@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeScreen } from '../components/SafeScreen';
+import { AnimatedScreen } from '../components/AnimatedScreen';
 import { useNavigation } from '@react-navigation/native';
 
 const PetDetailScreen = () => {
@@ -9,6 +10,7 @@ const PetDetailScreen = () => {
 
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         <View style={styles.heroWrapper}>
           <ImageBackground
@@ -125,6 +127,7 @@ const PetDetailScreen = () => {
           <MaterialIcons name="pets" size={18} color="#ffffff" />
         </TouchableOpacity>
       </View>
+      </AnimatedScreen>
     </SafeScreen>
   );
 };

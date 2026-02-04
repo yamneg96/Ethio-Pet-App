@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, ImageBackground } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeScreen } from '../components/SafeScreen';
+import { AnimatedScreen } from '../components/AnimatedScreen';
+import { listPets } from '../services/pets';
 
 const filters = ['All', 'Dogs', 'Cats', 'Small Pets', 'Location'];
 
@@ -41,6 +43,27 @@ const listings = [
 ];
 
 const ExploreScreen = () => {
+  const [items, setItems] = useState(listings);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const data = await listPets({ limit: 12 });
+        const mapped = data.map((pet) => ({
+          id: pet.id,
+          name: pet.name,
+          breed: pet.breed,
+          price: `$${pet.price}`,
+          image: pet.images?.find((img) => img.isPrimary)?.url || pet.images?.[0]?.url || listings[0].image,
+        }));
+        if (mapped.length) setItems(mapped);
+      } catch {
+      }
+    };
+    load();
+  }, []);
+
+  const data = useMemo(() => items, [items]);
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
       <View style={styles.header}>
@@ -61,8 +84,9 @@ const ExploreScreen = () => {
           </TouchableOpacity>
         ))}
       </ScrollView>
+        <AnimatedScreen>
       <ScrollView contentContainerStyle={styles.grid} showsVerticalScrollIndicator={false}>
-        {listings.map((pet) => (
+        {data.map((pet) => (
           <View key={pet.id} style={styles.card}>
             <View style={styles.cardImageWrapper}>
               <ImageBackground source={{ uri: pet.image }} style={styles.cardImage}>
@@ -86,6 +110,7 @@ const ExploreScreen = () => {
           </View>
         ))}
       </ScrollView>
+        </AnimatedScreen>
     </SafeScreen>
   );
 };

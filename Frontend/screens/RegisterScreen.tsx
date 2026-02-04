@@ -1,26 +1,55 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Image, Alert } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types';
 import { SafeScreen } from '../components/SafeScreen';
 import { useAuthStore } from '../store/authStore';
+import { register, login } from '../services/auth';
+import { getMe } from '../services/users';
+import { setAuthToken } from '../services/api';
+import { AnimatedScreen } from '../components/AnimatedScreen';
+import { AnimatedPressable } from '../components/AnimatedPressable';
 
 const RegisterScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [role, setRole] = useState<'Buyer' | 'Seller'>('Buyer');
   const setRoleStore = useAuthStore((state) => state.setRole);
   const setAuthenticated = useAuthStore((state) => state.setAuthenticated);
+  const setTokens = useAuthStore((state) => state.setTokens);
+  const setUser = useAuthStore((state) => state.setUser);
+  const [fullName, setFullName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = () => {
-    setRoleStore(role === 'Buyer' ? 'buyer' : 'seller');
-    setAuthenticated(true);
-    navigation.replace('AppTabs');
+  const roleMap = { BUYER: 'buyer', SELLER: 'seller', ADMIN: 'admin' } as const;
+
+  const handleSubmit = async () => {
+    if (loading) return;
+    setLoading(true);
+    try {
+      await register(email.trim(), password, role === 'Buyer' ? 'BUYER' : 'SELLER', phone || undefined);
+      const tokens = await login(email.trim(), password);
+      setTokens(tokens.accessToken, tokens.refreshToken);
+      setAuthToken(tokens.accessToken);
+      const me = await getMe();
+      setUser({ id: me.id, email: me.email, role: roleMap[me.role] });
+      setRoleStore(role === 'Buyer' ? 'buyer' : 'seller');
+      setAuthenticated(true);
+      navigation.replace('AppTabs');
+    } catch (error) {
+      Alert.alert('Registration failed', 'Please check your details and try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <View style={styles.topBar}>
         <TouchableOpacity style={styles.iconButton} onPress={() => navigation.goBack()}>
           <MaterialIcons name="arrow-back-ios-new" size={20} color="#0f172a" />
@@ -61,36 +90,36 @@ const RegisterScreen = () => {
             <Text style={styles.label}>Full Name</Text>
             <View style={styles.inputWrapper}>
               <MaterialIcons name="person" size={20} color="#94a3b8" style={styles.inputIcon} />
-              <TextInput placeholder="John Doe" placeholderTextColor="#94a3b8" style={styles.input} />
+              <TextInput placeholder="John Doe" placeholderTextColor="#94a3b8" style={styles.input} value={fullName} onChangeText={setFullName} />
             </View>
           </View>
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Phone Number</Text>
             <View style={styles.inputWrapper}>
               <MaterialIcons name="call" size={20} color="#94a3b8" style={styles.inputIcon} />
-              <TextInput placeholder="+1 (555) 000-0000" placeholderTextColor="#94a3b8" style={styles.input} />
+              <TextInput placeholder="+1 (555) 000-0000" placeholderTextColor="#94a3b8" style={styles.input} value={phone} onChangeText={setPhone} />
             </View>
           </View>
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Email Address</Text>
             <View style={styles.inputWrapper}>
               <MaterialIcons name="mail" size={20} color="#94a3b8" style={styles.inputIcon} />
-              <TextInput placeholder="name@example.com" placeholderTextColor="#94a3b8" style={styles.input} />
+              <TextInput placeholder="name@example.com" placeholderTextColor="#94a3b8" style={styles.input} value={email} onChangeText={setEmail} autoCapitalize="none" />
             </View>
           </View>
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Password</Text>
             <View style={styles.inputWrapper}>
               <MaterialIcons name="lock" size={20} color="#94a3b8" style={styles.inputIcon} />
-              <TextInput placeholder="Min. 8 characters" placeholderTextColor="#94a3b8" secureTextEntry style={styles.input} />
+              <TextInput placeholder="Min. 8 characters" placeholderTextColor="#94a3b8" secureTextEntry style={styles.input} value={password} onChangeText={setPassword} />
               <MaterialIcons name="visibility-off" size={20} color="#94a3b8" />
             </View>
           </View>
         </View>
-        <TouchableOpacity style={styles.primaryButton} onPress={handleSubmit}>
-          <Text style={styles.primaryButtonText}>Create Account</Text>
+        <AnimatedPressable style={styles.primaryButton} onPress={handleSubmit}>
+          <Text style={styles.primaryButtonText}>{loading ? 'Creating...' : 'Create Account'}</Text>
           <MaterialIcons name="arrow-forward" size={18} color="#ffffff" />
-        </TouchableOpacity>
+        </AnimatedPressable>
         <View style={styles.dividerRow}>
           <View style={styles.dividerLine} />
           <Text style={styles.dividerText}>Or sign up with</Text>
@@ -120,6 +149,7 @@ const RegisterScreen = () => {
           </Text>
         </View>
       </ScrollView>
+      </AnimatedScreen>
     </SafeScreen>
   );
 };

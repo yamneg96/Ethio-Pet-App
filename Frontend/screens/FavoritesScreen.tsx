@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeScreen } from '../components/SafeScreen';
+import { AnimatedScreen } from '../components/AnimatedScreen';
 
 const favorites = [
   {
@@ -49,6 +50,7 @@ const favorites = [
 const FavoritesScreen = () => {
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <View style={styles.header}>
         <Text style={styles.title}>Your Favorites</Text>
         <TouchableOpacity style={styles.filterButton}>
@@ -82,6 +84,7 @@ const FavoritesScreen = () => {
           </View>
         ))}
       </ScrollView>
+      </AnimatedScreen>
     </SafeScreen>
   );
 };

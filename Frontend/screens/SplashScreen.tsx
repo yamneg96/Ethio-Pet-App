@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types';
 import { SafeScreen } from '../components/SafeScreen';
+import { AnimatedScreen } from '../components/AnimatedScreen';
 
 const SplashScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -19,6 +20,7 @@ const SplashScreen = () => {
 
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <View style={styles.centerContent}>
         <View style={styles.logoWrapper}>
           <View style={styles.logoGlow} />
@@ -39,6 +41,7 @@ const SplashScreen = () => {
       </TouchableOpacity>
       <View style={styles.decorTop} />
       <View style={styles.decorBottom} />
+      </AnimatedScreen>
     </SafeScreen>
   );
 };

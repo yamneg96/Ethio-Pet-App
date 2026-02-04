@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types';
 import { SafeScreen } from '../components/SafeScreen';
+import { AnimatedScreen } from '../components/AnimatedScreen';
 
 const heroImage = {
   uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAM7YnVLmedfjLYhzn7u4WdnfB6BIbxBLooqjbQz4Wc5Tn8W3cwL5vZn0r08dajymlJMiC3DPgbMxjAZqCd4lYN5m1zfKKUQxw6WlgFRDx7DdoBeYMoMO4IYPeYnwfeb41yS9u3o_zZQpE-uMwEGKPPy0p9o3lQzxRwJx25aWUtQLCPVPjN6jBaCBFiiS57FsuMsIoPKyAlhQLKNRG0D-fFwQ41xOtCfAYKml5RYXa0UYZG9U9npWSPXgIr4H58gOdYjsVaIVpEC6E',
@@ -15,6 +16,7 @@ const OnboardingScreen = () => {
 
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <View style={styles.heroWrapper}>
         <ImageBackground source={heroImage} style={styles.heroImage} resizeMode="cover">
           <View style={styles.heroOverlay} />
@@ -53,6 +55,7 @@ const OnboardingScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
+      </AnimatedScreen>
     </SafeScreen>
   );
 };

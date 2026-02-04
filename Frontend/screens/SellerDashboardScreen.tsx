@@ -2,10 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeScreen } from '../components/SafeScreen';
+import { AnimatedScreen } from '../components/AnimatedScreen';
 
 const SellerDashboardScreen = () => {
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.headerTop}>
           <View style={styles.headerLeft}>
@@ -100,6 +102,7 @@ const SellerDashboardScreen = () => {
           <Text style={styles.fabText}>Add Pet</Text>
         </TouchableOpacity>
       </View>
+      </AnimatedScreen>
     </SafeScreen>
   );
 };

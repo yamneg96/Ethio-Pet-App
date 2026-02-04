@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeScreen } from '../components/SafeScreen';
+import { AnimatedScreen } from '../components/AnimatedScreen';
 import { useNavigation } from '@react-navigation/native';
 
 const cartItems = [
@@ -26,6 +27,7 @@ const CartScreen = () => {
 
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
           <MaterialIcons name="arrow-back" size={22} color="#0f172a" />
@@ -77,6 +79,7 @@ const CartScreen = () => {
           <MaterialIcons name="arrow-forward" size={18} color="#ffffff" />
         </TouchableOpacity>
       </View>
+      </AnimatedScreen>
     </SafeScreen>
   );
 };

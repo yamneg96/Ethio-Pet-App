@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, ScrollView, TextInput } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeScreen } from '../components/SafeScreen';
+import { AnimatedScreen } from '../components/AnimatedScreen';
+import { listPets } from '../services/pets';
+import { AnimatedPressable } from '../components/AnimatedPressable';
 
 const featuredPets = [
   {
@@ -37,8 +40,33 @@ const categories = [
 ];
 
 const HomeScreen = () => {
+  const [featured, setFeatured] = useState(featuredPets);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const data = await listPets({ featured: true, limit: 6 });
+        const mapped = data.map((pet) => ({
+          id: pet.id,
+          name: pet.name,
+          breed: pet.breed,
+          age: `${pet.ageMonths} months`,
+          gender: 'Unknown',
+          weight: '—',
+          distance: pet.location,
+          image: pet.images?.find((img) => img.isPrimary)?.url || pet.images?.[0]?.url || featuredPets[0].image,
+        }));
+        if (mapped.length) setFeatured(mapped);
+      } catch {
+      }
+    };
+    load();
+  }, []);
+
+  const featuredList = useMemo(() => featured, [featured]);
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <View style={styles.header}>
         <View style={styles.profileRow}>
           <View style={styles.avatarWrapper}>
@@ -55,9 +83,9 @@ const HomeScreen = () => {
             <Text style={styles.userName}>Alex Morgan</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.notificationButton}>
+        <AnimatedPressable style={styles.notificationButton}>
           <MaterialIcons name="notifications" size={22} color="#0d1b0d" />
-        </TouchableOpacity>
+        </AnimatedPressable>
       </View>
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         <Text style={styles.heroTitle}>
@@ -72,9 +100,9 @@ const HomeScreen = () => {
             placeholderTextColor="#9ca3af"
             style={styles.searchInput}
           />
-          <TouchableOpacity style={styles.filterButton}>
+          <AnimatedPressable style={styles.filterButton}>
             <MaterialIcons name="tune" size={18} color="#0d1b0d" />
-          </TouchableOpacity>
+          </AnimatedPressable>
         </View>
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Categories</Text>
@@ -96,7 +124,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.featuredList}>
-          {featuredPets.map((pet) => (
+          {featuredList.map((pet) => (
             <View key={pet.id} style={styles.card}>
               <View style={styles.cardImageWrapper}>
                 <ImageBackground source={{ uri: pet.image }} style={styles.cardImage}>
@@ -139,6 +167,7 @@ const HomeScreen = () => {
           ))}
         </View>
       </ScrollView>
+      </AnimatedScreen>
     </SafeScreen>
   );
 };

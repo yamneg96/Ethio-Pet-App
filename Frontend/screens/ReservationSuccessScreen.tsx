@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeScreen } from '../components/SafeScreen';
+import { AnimatedScreen } from '../components/AnimatedScreen';
 import { useNavigation } from '@react-navigation/native';
 
 const ReservationSuccessScreen = () => {
@@ -9,6 +10,7 @@ const ReservationSuccessScreen = () => {
 
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <TouchableOpacity style={styles.iconButton} onPress={() => navigation.goBack()}>
@@ -73,6 +75,7 @@ const ReservationSuccessScreen = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
+      </AnimatedScreen>
     </SafeScreen>
   );
 };

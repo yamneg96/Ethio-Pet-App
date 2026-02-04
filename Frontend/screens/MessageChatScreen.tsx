@@ -2,10 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, ImageBackground, TextInput } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeScreen } from '../components/SafeScreen';
+import { AnimatedScreen } from '../components/AnimatedScreen';
 
 const MessageChatScreen = () => {
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.inboxHeader}>
           <TouchableOpacity style={styles.menuButton}>
@@ -139,6 +141,7 @@ const MessageChatScreen = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
+      </AnimatedScreen>
     </SafeScreen>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeScreen } from '../components/SafeScreen';
+import { AnimatedScreen } from '../components/AnimatedScreen';
 import { useNavigation } from '@react-navigation/native';
 
 const PaymentMethodScreen = () => {
@@ -10,6 +11,7 @@ const PaymentMethodScreen = () => {
 
   return (
     <SafeScreen style={styles.container} edges={['top', 'bottom']}>
+      <AnimatedScreen>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
@@ -76,6 +78,7 @@ const PaymentMethodScreen = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
+      </AnimatedScreen>
       <View style={styles.bottomBar}>
         <TouchableOpacity style={styles.payButton}>
           <Text style={styles.payText}>Pay Now $150.00</Text>

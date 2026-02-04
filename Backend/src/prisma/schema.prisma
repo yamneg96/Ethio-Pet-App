@@ -1,0 +1,236 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  BUYER
+  SELLER
+  ADMIN
+}
+
+enum ReservationStatus {
+  PLACED
+  CONFIRMED
+}
+
+enum DeliveryMethod {
+  PICKUP
+  DELIVERY
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
+enum OrderStatus {
+  PLACED
+  CONFIRMED
+  IN_TRANSIT
+  DELIVERED
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  passwordHash  String
+  phone         String?
+  role          Role
+  isDeleted     Boolean        @default(false)
+  deletedAt     DateTime?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  sellerProfile SellerProfile?
+  pets          Pet[]
+  favorites     Favorite[]
+  reservations  Reservation[]  @relation("BuyerReservations")
+  orders        Order[]        @relation("BuyerOrders")
+  refreshTokens RefreshToken[]
+  chatRoomsAsBuyer ChatRoom[]  @relation("BuyerChatRooms")
+  chatRoomsAsSeller ChatRoom[] @relation("SellerChatRooms")
+  messages      Message[]
+  reviews       Review[]
+  notifications Notification[]
+}
+
+model SellerProfile {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  displayName String
+  bio         String?
+  location    String?
+  isVerified  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+model Pet {
+  id          String     @id @default(uuid())
+  sellerId    String
+  name        String
+  breed       String
+  ageMonths   Int
+  price       Float
+  location    String
+  description String?
+  featured    Boolean    @default(false)
+  deletedAt   DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  seller      User       @relation(fields: [sellerId], references: [id])
+  images      PetImage[]
+  favorites   Favorite[]
+  reservations Reservation[]
+  reviews     Review[]
+
+  @@index([breed])
+  @@index([location])
+  @@index([featured])
+}
+
+model PetImage {
+  id        String   @id @default(uuid())
+  petId     String
+  url       String
+  isPrimary Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  pet       Pet      @relation(fields: [petId], references: [id])
+}
+
+model Favorite {
+  id        String   @id @default(uuid())
+  userId    String
+  petId     String
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+  pet       Pet      @relation(fields: [petId], references: [id])
+
+  @@unique([userId, petId])
+  @@index([userId])
+}
+
+model Reservation {
+  id              String            @id @default(uuid())
+  buyerId         String
+  petId           String
+  status          ReservationStatus
+  deliveryMethod  DeliveryMethod
+  deliveryAddress String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  buyer           User              @relation("BuyerReservations", fields: [buyerId], references: [id])
+  pet             Pet               @relation(fields: [petId], references: [id])
+  payment         Payment?
+  order           Order?
+
+  @@index([buyerId])
+}
+
+model Payment {
+  id                String        @id @default(uuid())
+  reservationId     String        @unique
+  amount            Float
+  currency          String
+  provider          String
+  providerPaymentId String?
+  status            PaymentStatus
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  reservation       Reservation   @relation(fields: [reservationId], references: [id])
+}
+
+model Order {
+  id            String       @id @default(uuid())
+  reservationId String       @unique
+  buyerId       String
+  sellerId      String
+  status        OrderStatus
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  reservation   Reservation  @relation(fields: [reservationId], references: [id])
+  buyer         User         @relation("BuyerOrders", fields: [buyerId], references: [id])
+  seller        User         @relation(fields: [sellerId], references: [id])
+  chatRoom      ChatRoom?
+
+  @@index([buyerId])
+  @@index([sellerId])
+}
+
+model ChatRoom {
+  id        String   @id @default(uuid())
+  orderId   String   @unique
+  buyerId   String
+  sellerId  String
+  createdAt DateTime @default(now())
+
+  order     Order    @relation(fields: [orderId], references: [id])
+  buyer     User     @relation("BuyerChatRooms", fields: [buyerId], references: [id])
+  seller    User     @relation("SellerChatRooms", fields: [sellerId], references: [id])
+  messages  Message[]
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  roomId    String
+  senderId  String
+  content   String
+  createdAt DateTime @default(now())
+
+  room      ChatRoom @relation(fields: [roomId], references: [id])
+  sender    User     @relation(fields: [senderId], references: [id])
+
+  @@index([roomId])
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  petId     String
+  userId    String
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+
+  pet       Pet      @relation(fields: [petId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([petId])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  title     String
+  body      String
+  data      Json
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+  @@index([userId])
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  userId    String
+  tokenHash String
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+  @@index([userId])
+}

@@ -11,6 +11,7 @@ import { getMe } from '../services/users';
 import { setAuthToken } from '../services/api';
 import { AnimatedScreen } from '../components/AnimatedScreen';
 import { AnimatedPressable } from '../components/AnimatedPressable';
+import Logo from "../assets/logo.png";
 
 const LoginScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -53,9 +54,7 @@ const LoginScreen = () => {
         <View style={styles.branding}>
           <View style={styles.logoWrapper}>
             <Image
-              source={{
-                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAeMqrpgfYbt1ZRWa0bYXdXYaj2pC9o0QVKtFe996B-C764FS8Q4cA3WWfoCUKVoYnxGGAAt9SgIw3rKeKIpCR7i2KLqayHMQC3OoW2_Ia7fHOJsNaM2QcTFhFJzvT6sRhR1LewtPqujzahaf8mRBX4J0nq-yX0yZXyJBposrUw4QRA8-1v0Y1m-Dl2wmHEtNchT7TQ1kLVs5nQ4PdnGB7qfSCWiihT0506ODke6v0BES7B_iUBWqCOUiNjRICDcHUn_h_prB1l8Eg',
-              }}
+              source={Logo}
               style={styles.logo}
             />
           </View>

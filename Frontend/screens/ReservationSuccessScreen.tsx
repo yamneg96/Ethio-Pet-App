@@ -4,6 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { SafeScreen } from '../components/SafeScreen';
 import { AnimatedScreen } from '../components/AnimatedScreen';
 import { useNavigation } from '@react-navigation/native';
+import Logo from '../assets/logo.png';
 
 const ReservationSuccessScreen = () => {
   const navigation = useNavigation();
@@ -27,9 +28,7 @@ const ReservationSuccessScreen = () => {
           <View style={styles.illustrationGlow} />
           <MaterialIcons name="pets" size={140} color="rgba(76,175,80,0.2)" style={styles.illustrationIcon} />
           <ImageBackground
-            source={{
-              uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBh9TX7W5fQWZz9Ji4zbTyIeYdqb_SENF1GrPYxkZHEePNUrZCfef-OIDivph8YiNxINBR_HttV1VcEAw6OefkhaSiM7NEi550wNarDNbYkvgtskBZyHlj_MEBMBxeKXCZfrNRGb84P4aVHAOxfrr-Ts_MUrd3GYdnoxUytwcURRC93fgQd6A2RnSnYthS0WtOvK2a88cfUerxi0nNI2MNivPuCDjxnTqefCXQd5cXIPNawsFJ8AGRkX9dFghE5CIwsr14wvsKlXMI',
-            }}
+            source={Logo} 
             style={styles.illustrationImage}
           />
         </View>

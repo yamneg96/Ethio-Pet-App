@@ -6,7 +6,7 @@ import { useFonts as useInterFonts, Inter_400Regular, Inter_500Medium, Inter_700
 import { View, Text, StyleSheet } from 'react-native';
 import RootNavigator from './navigation/RootNavigator';
 
-const DEBUG_MINIMAL_RENDER = true;
+const DEBUG_MINIMAL_RENDER = false;
 
 export default function App() {
   const [jakartaLoaded] = useJakartaFonts({

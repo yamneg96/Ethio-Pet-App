@@ -11,10 +11,8 @@ import {
   Send, 
   Clock, 
   ShieldCheck,
-  Instagram,
-  Twitter,
-  Facebook
 } from "lucide-react";
+import { FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 
@@ -81,7 +79,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex gap-4">
-             {[Instagram, Twitter, Facebook].map((Icon, i) => (
+             {[FaInstagram, FaTwitter, FaFacebook].map((Icon, i) => (
                 <button key={i} className="h-14 w-14 rounded-2xl bg-surface-container-level-higher flex items-center justify-center border border-outline-variant text-on-surface-variant hover:bg-secondary hover:text-white transition-all hover:-translate-y-1">
                    <Icon className="h-6 w-6" />
                 </button>

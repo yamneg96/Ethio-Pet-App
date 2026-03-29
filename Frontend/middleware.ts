@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/request";
+import type { NextRequest } from "next/server";
 import { verifyToken } from "@/lib/auth";
 
 export function middleware(request: NextRequest) {
@@ -7,8 +7,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Protected routes
-  const protectedPaths = ["/buyer", "/seller", "/admin"];
-  const isProtected = protectedPaths.some(path => pathname.startsWith(path));
+  const isProtected = pathname.startsWith("/buy-") || pathname.startsWith("/sell-") || pathname.startsWith("/admin");
 
   if (isProtected && !token) {
     return NextResponse.redirect(new URL("/login", request.url));
@@ -23,10 +22,10 @@ export function middleware(request: NextRequest) {
     }
 
     // Role-based protection
-    if (pathname.startsWith("/buyer") && decoded.role !== "buyer") {
+    if (pathname.startsWith("/buy-") && decoded.role !== "buyer") {
       return NextResponse.redirect(new URL("/", request.url));
     }
-    if (pathname.startsWith("/seller") && decoded.role !== "seller") {
+    if (pathname.startsWith("/sell-") && decoded.role !== "seller") {
       return NextResponse.redirect(new URL("/", request.url));
     }
     if (pathname.startsWith("/admin") && decoded.role !== "admin") {
@@ -38,5 +37,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/buyer/:path*", "/seller/:path*", "/admin/:path*"],
+  matcher: ["/buy-:path*", "/sell-:path*", "/admin/:path*"],
 };

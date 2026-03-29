@@ -1,5 +1,6 @@
 import { getOrders } from "@/lib/actions/order";
-import OrdersClient from "@/app/buyer/orders/OrdersClient"; 
+import OrdersClient from "@/components/orders/OrdersClient";
+ 
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/actions/auth";
 

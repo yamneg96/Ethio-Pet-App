@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   description: "Connect hearts and paws. A premium platform for pet adoption and breeder management.",
 };
 
+import { ThemeProvider } from "@/components/shared/ThemeProvider";
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -22,18 +24,20 @@ export default async function RootLayout({
   const session = await getSession();
 
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-surface-container-lowest text-on-surface`}>
-        <AuthProvider initialUser={session}>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="grow pt-16">
-              {children}
-            </main>
-            <Footer />
-          </div>
-          <Toaster position="top-center" richColors />
-        </AuthProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} bg-surface-container-lowest text-on-surface antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <AuthProvider initialUser={session}>
+            <div className="flex flex-col min-h-screen">
+              <Navbar />
+              <main className="grow pt-16">
+                {children}
+              </main>
+              <Footer />
+            </div>
+            <Toaster position="top-center" richColors />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
